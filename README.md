@@ -1,1 +1,2 @@
-# Problema-Planeta-en-Orbita
+# Problema-Planeta-en-Orbita 
+# Sebastian Andres Ruiz Garcia
