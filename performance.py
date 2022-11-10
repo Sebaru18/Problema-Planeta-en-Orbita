@@ -1,6 +1,3 @@
-#Fichero para la prueba y comparativa rendimiento
-#solo python con cython
-
 import time
 import py_planetaOrbita
 import cy_planetaOrbita
@@ -10,7 +7,10 @@ import cy_planetaOrbita
 	Ejemplo usando datos del planeta TIERRA 
 	La idea principal es crear un .csv con la 
 	toma del tiempo
-	
+
+
+	Bateria de experimentos
+
 """
 
 
@@ -35,19 +35,22 @@ planeta_cy.vx = 2.000*10**3
 planeta_cy.vy = 29.87*10**3
 planeta_cy.vz = 0.034*10**3
 planeta_cy.m = 5.9741*10**24
+
 """ variables adicionales """
+
+
 time_span = 400
-n_steps = 2000000 
+n_steps = 2000000
 
 
 
 
 
-formato_datos = "{:.5f},{:.5f}\n"
+formato_datos = "{:.5f},{:5f}\n"
 
 
 
-for i in range(2):
+for i in range(30):
 
 	iniciopy = time.time()
 	print("python: ")
@@ -59,9 +62,6 @@ for i in range(2):
 	iniciocy = time.time()
 	print("cython: ")
 	cy_planetaOrbita.step_time(planeta_cy, time_span, n_steps)
-	finalycy = time.time()  - iniciocy	
-	
+	finalycy = time.time()  - iniciocy
 	with open("tierra.csv","a") as archivo:
-		archivo.write(formato_datos.format(finalpy, finalcy))
-    
-    
+		archivo.write(formato_datos.format(finalpy, finalycy))
