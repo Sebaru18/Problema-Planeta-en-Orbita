@@ -29,11 +29,11 @@ cdef class Planet(object):
 
 
 
-""" 	¿Que pasa si distance = 0?
- 	Se usarar un decordador de cython, para evitar
- 	la division sobre cero y no sea costo computacional 
+"""	¿Que pasa si distance = 0?
+	Se usarar un decordador de cython, para evitar
+	la division sobre cero y no sea costo computacional 
 """
- 	
+
 @cython.cdivision(True)
 
 cdef void single_step(Planet planet, float dt) nogil:
@@ -51,10 +51,10 @@ cdef void single_step(Planet planet, float dt) nogil:
 	planet.vz += (dt * Fz) / planet.m
 
 
-cdef step_time (Planet planet,float time_span,int n_steps):
+def step_time(Planet planet, float time_snap,int n_steps):
 	cdef float dt
 	cdef int j	
-	dt = time_span/n_steps
+	dt = time_snap/n_steps
 	"""Habilitar la posibilidad del paralelismo """
 	with nogil:
 		for j in range(n_steps):
